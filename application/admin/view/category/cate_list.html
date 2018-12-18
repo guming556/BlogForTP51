@@ -1,0 +1,37 @@
+{layout name="layout"}
+<h4>栏目列表</h4>
+<table class="table table-hover table-bordered text-center">
+    <thead>
+    <th class="text-center">ID</th>
+    <th class="text-center">栏目名</th>
+    <th class="text-center">状态</th>
+    <th class="text-center">排序</th>
+    <th class="text-center">创建时间</th>
+    <th class="text-center">操作</th>
+    </thead>
+
+    <tbody>
+    {volist name='cateList' id='cate'}
+    <tr>
+    <td>{$cate.id}</td>
+    <td>{$cate.name}</td>
+    <td>{$cate.status}</td>
+    <td>{$cate.sort}</td>
+    <td>{$cate.create_time}</td>
+    <td><a href="{:url('cateEdit', ['id' => $cate.id])}" class="btn btn-success btn-sm">编辑</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href=javascript:(0); onclick="del({$cate.id})" class="btn btn-danger btn-sm">删除</a></td></tr>
+    {/volist}
+    </tbody>
+</table>
+<div>
+    <a href="{:url('cateAdd')}" class="btn btn-primary">添加栏目</a>
+</div>
+
+<script>
+    function del(id) {
+        if (confirm('是否删除？') == true) {
+            window.location.href = "catedel/id/"+id;
+        }
+    }
+</script>
+

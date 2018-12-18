@@ -1,0 +1,22 @@
+{extend name="public:base"}
+{block name="left"}
+<div class="row">
+    <div class="col-md-8">
+        <div class="page-header">
+            <h2>{$cateName}</h2>
+        </div>
+        {volist name='artList' id='art'}
+        <div>
+            <img class="img-rounded" src="{$art.title_img}" style="margin-right: 22px;float: left;width: 100px;height: 85px">
+            <div>
+                <h4><a href="{:url('user/detail', ['art_id' => $art.id])}">{$art.title}</a></h4>
+                <p>摘要：{$art.content|artAbstract}</p>
+                <div>作者：{$art.user_id|getUserNameByID} &nbsp;&nbsp;&nbsp;时间：{$art.create_time}&nbsp;&nbsp;&nbsp;阅读量：12345&nbsp;&nbsp;&nbsp;点赞量：999</div>
+            </div>
+        </div>
+        <hr />
+        {/volist}
+        <div class="text-center">{$artList|raw}</div>
+
+    </div>
+{/block}
